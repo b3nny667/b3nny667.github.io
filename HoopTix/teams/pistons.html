@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detroit Pistons Schedule - HoopTix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C8102E;
+            --secondary: #1D42BA;
+            --accent: #FFC72C;
+            --light: #F1FAEE;
+            --dark: #002D62;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --pistons-blue: #006BB6;
+            --pistons-red: #ED174C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #B00E29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #18379E;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-promo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-promo i {
+            color: var(--primary);
+        }
+        
+        .top-nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .top-nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 180px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-img img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding-left: 45px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Team Header */
+        .team-header {
+            background: linear-gradient(rgba(0, 107, 182, 0.85), rgba(237, 23, 76, 0.9)), url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 30px;
+        }
+        
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .team-logo-large {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .team-logo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .team-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .team-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Schedule Section */
+        .schedule-section {
+            padding: 40px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .events-count {
+            background: var(--pistons-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--pistons-blue);
+            color: white;
+        }
+        
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+        }
+        
+        .game-date {
+            width: 100px;
+            background: var(--pistons-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .month {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        
+        .ticket-count {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .game-details {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .teams {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        
+        .team-logo-sm {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .team-logo-sm img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .vs {
+            font-weight: 700;
+            color: var(--gray);
+        }
+        
+        .game-info {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .game-info i {
+            color: var(--primary);
+        }
+        
+        .ticket-notice {
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .ticket-notice i {
+            color: var(--primary);
+        }
+        
+        .game-action {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light-gray);
+            gap: 10px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .tickets-available {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        /* Hottest Event */
+        .hottest-event {
+            background: linear-gradient(135deg, var(--pistons-blue), var(--primary));
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .hottest-date {
+            text-align: center;
+        }
+        
+        .hottest-month {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .hottest-day {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 5px 0;
+        }
+        
+        .hottest-tickets {
+            font-size: 0.9rem;
+        }
+        
+        .hottest-details {
+            flex-grow: 1;
+        }
+        
+        .hottest-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hottest-teams {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination-btn:hover {
+            background: var(--pistons-blue);
+            color: white;
+        }
+        
+        .pagination-btn.active {
+            background: var(--pistons-blue);
+            color: white;
+        }
+        
+        .pagination-prev, .pagination-next {
+            padding: 10px 15px;
+            border-radius: 30px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pagination-prev:hover, .pagination-next:hover {
+            background: var(--pistons-blue);
+            color: white;
+        }
+        
+        .pagination-info {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Team Bio */
+        .team-bio {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .team-bio h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .team-bio p {
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .game-card {
+                flex-direction: column;
+            }
+            
+            .game-date {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 20px;
+            }
+            
+            .game-action {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .team-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-stats {
+                justify-content: center;
+            }
+            
+            .hottest-event {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .main-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+            
+            .teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .team-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="container top-nav-container">
+            <div class="nav-promo">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Get 10% off your first order! Use code: HOOPS10</span>
+            </div>
+            <div class="top-nav-links">
+                <a href="#">Help Center</a>
+                <a href="#">Sell Tickets</a>
+                <a href="#">My Orders</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <img src="/img/Hooptix Logo.png" alt="HoopTix Logo">
+                </div>
+                <div class="logo-text">Hoop<span>Tix</span></div>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search events, teams, and more">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="/index.html">Home</a>
+                <a href="/games.html">Games</a>
+                <a href="/arenas.html">Arenas</a>
+                <a href="/teams.html">Teams</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Register</a>
+                <a href="#" class="btn">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Team Header -->
+    <section class="team-header">
+        <div class="container">
+            <div class="team-info">
+                <div class="team-logo-large">
+                    <img src="data:image/png;base64,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" alt="Detroit Pistons">
+                </div>
+                <div class="team-details">
+                    <h1>Detroit Pistons</h1>
+                    <p>Little Caesars Arena • Detroit, MI</p>
+                    <div class="team-stats">
+                        <div class="stat">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Championships</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1941</div>
+                            <div class="stat-label">Founded</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">38</div>
+                            <div class="stat-label">Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Games</h2>
+                <div class="events-count">38 events at Little Caesars Arena</div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Games</button>
+                <button class="filter-btn" data-filter="home">Home Games</button>
+                <button class="filter-btn" data-filter="away">Away Games</button>
+                <button class="filter-btn" data-filter="tickets">With Tickets</button>
+            </div>
+
+            <!-- Hottest Event -->
+            <div class="hottest-event">
+                <div class="hottest-date">
+                    <div class="hottest-month">NOV</div>
+                    <div class="hottest-day">15</div>
+                    <div class="hottest-tickets">500+ tickets</div>
+                </div>
+                <div class="hottest-details">
+                    <h3>Hottest Event</h3>
+                    <div class="hottest-teams">
+                        <div class="team">
+                            <div class="team-logo-sm">
+                                <img src="data:image/png;base64,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" alt="Pistons">
+                            </div>
+                            <span>Pistons</span>
+                        </div>
+                        <div class="vs">vs</div>
+                        <div class="team">
+                            <div class="team-logo-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/640px-Los_Angeles_Lakers_logo.svg.png" alt="Lakers">
+                            </div>
+                            <span>Lakers</span>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <div><i class="fas fa-clock"></i> 7:00 PM</div>
+                        <div><i class="fas fa-map-marker-alt"></i> Little Caesars Arena, Detroit, MI</div>
+                    </div>
+                </div>
+                <div class="game-action">
+                    <div class="price">From $75</div>
+                    <a href="/seating.html" class="btn">See Tickets</a>
+                </div>
+            </div>
+
+            <!-- Games List -->
+            <div class="games-list" id="games-container">
+                <!-- Games will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-prev" id="prev-page">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+                <button class="pagination-btn" data-page="3">3</button>
+                <button class="pagination-btn" data-page="4">4</button>
+                <button class="pagination-btn" data-page="5">5</button>
+                <button class="pagination-btn" data-page="6">6</button>
+                <button class="pagination-btn" data-page="7">7</button>
+                <button class="pagination-btn" data-page="8">8</button>
+                <span class="pagination-info">Page 1 of 8</span>
+                <button class="pagination-next" id="next-page">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Team Bio -->
+            <div class="team-bio">
+                <h2>About the Detroit Pistons</h2>
+                <p>The Detroit Pistons are an American professional basketball team based in Detroit. The Pistons compete in the National Basketball Association (NBA) as a member of the league's Eastern Conference Central Division. The team plays its home games at Little Caesars Arena, located in Midtown Detroit.</p>
+                <p>Founded in Fort Wayne, Indiana as the Fort Wayne Zollner Pistons in 1941, the team was a member of the National Basketball League (NBL) before joining the Basketball Association of America (BAA) in 1948. The BAA became the NBA in 1949, and the Pistons became part of the merged league. In 1957, the franchise moved to Detroit.</p>
+                <p>The Pistons have won three NBA championships: in 1989, 1990, and 2004. The "Bad Boys" of the late 1980s and early 1990s, led by Isiah Thomas, Joe Dumars, Bill Laimbeer, and Dennis Rodman, won back-to-back titles in 1989 and 1990. The 2003–04 team, led by Chauncey Billups, Richard Hamilton, Ben Wallace, and Rasheed Wallace, defeated the heavily favored Los Angeles Lakers in the 2004 NBA Finals.</p>
+                <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>HoopTix</h3>
+                    <p>Your premier destination for basketball game tickets with the best seating experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Teams</a></li>
+                        <li><a href="#">Arenas</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers, free giveaways, and game updates.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" class="btn" style="width:100%">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HoopTix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+         // Team logo mapping
+        const teamLogoMap = {
+            'Spurs': 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/640px-San_Antonio_Spurs.svg.png',
+            'Mavericks': 'https://upload.wikimedia.org/wikipedia/en/thumb/9/97/Dallas_Mavericks_logo.svg/640px-Dallas_Mavericks_logo.svg.png',
+            'Rockets': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/640px-Houston_Rockets.svg.png',
+            'Grizzlies': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/640px-Memphis_Grizzlies.svg.png',
+            'Pelicans': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/640px-New_Orleans_Pelicans_logo.svg.png',
+            'Lakers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/640px-Los_Angeles_Lakers_logo.svg.png',
+            'Clippers': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Los_Angeles_Clippers_%282015%29.svg/640px-Los_Angeles_Clippers_%282015%29.svg.png',
+            'Warriors': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Golden_State_Warriors_logo.svg/640px-Golden_State_Warriors_logo.svg.png',
+            'Suns': 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Phoenix_Suns_logo.svg/640px-Phoenix_Suns_logo.svg.png',
+            'Kings': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/SacramentoKings.svg/640px-SacramentoKings.svg.png',
+            'Timberwolves': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/640px-Minnesota_Timberwolves_logo.svg.png',
+            'Nuggets': 'https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Denver_Nuggets.svg/640px-Denver_Nuggets.svg.png',
+            'Trail Blazers': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/640px-Portland_Trail_Blazers_logo.svg.png',
+            'Thunder': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Oklahoma_City_Thunder.svg/640px-Oklahoma_City_Thunder.svg.png',
+            'Jazz': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Utah_Jazz_logo_2022.svg/640px-Utah_Jazz_logo_2022.svg.png',
+            'Bulls': 'https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Chicago_Bulls_logo.svg/640px-Chicago_Bulls_logo.svg.png',
+            'Cavaliers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/640px-Cleveland_Cavaliers_logo.svg.png',
+            'Pistons': 'data:image/png;base64,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',
+            'Pacers': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Indiana_Pacers.svg/640px-Indiana_Pacers.svg.png',
+            'Bucks': 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Milwaukee_Bucks_logo.svg/640px-Milwaukee_Bucks_logo.svg.png',
+            'Celtics': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Boston_Celtics_logo.svg/640px-Boston_Celtics_logo.svg.png',
+            '76ers': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0e/Philadelphia_76ers_logo.svg/640px-Philadelphia_76ers_logo.svg.png',
+            'Knicks': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/25/New_York_Knicks_logo.svg/640px-New_York_Knicks_logo.svg.png',
+            'Nets': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/640px-Brooklyn_Nets_newlogo.svg.png',
+            'Raptors': 'https://upload.wikimedia.org/wikipedia/en/thumb/3/36/Toronto_Raptors_logo.svg/640px-Toronto_Raptors_logo.svg.png',
+            'Hornets': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Charlotte_Hornets_%282014%29.svg/640px-Charlotte_Hornets_%282014%29.svg.png',
+            'Heat': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Miami_Heat_logo.svg/640px-Miami_Heat_logo.svg.png',
+            'Magic': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Orlando_Magic_logo.svg/640px-Orlando_Magic_logo.svg.png',
+            'Wizards': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Washington_Wizards_logo.svg/640px-Washington_Wizards_logo.svg.png',
+            'Hawks': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Atlanta_Hawks_logo.svg/640px-Atlanta_Hawks_logo.svg.png'
+        };
+
+        // Game data - 32 games for 8 pages (4 per page)
+        const gamesData = [
+            { month: 'OCT', day: 18, tickets: '450+', team1: 'Pistons', team2: 'Bulls', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Home opener - limited tickets', price: 'From $70', available: '450+ tickets', type: 'home' },
+            { month: 'OCT', day: 21, tickets: '500+', team1: 'Pistons', team2: 'Celtics', time: '7:30 PM', location: 'TD Garden, Boston, MA', notice: 'Premium matchup', price: 'From $85', available: '500+ tickets', type: 'away' },
+            { month: 'OCT', day: 24, tickets: '550+', team1: 'Pistons', team2: 'Hawks', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'New tickets added', price: 'From $65', available: '550+ tickets', type: 'home' },
+            { month: 'OCT', day: 27, tickets: '400+', team1: 'Pistons', team2: 'Heat', time: '8:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $70', available: '400+ tickets', type: 'home' },
+            { month: 'OCT', day: 30, tickets: '500+', team1: 'Pistons', team2: 'Knicks', time: '7:30 PM', location: 'Madison Square Garden, New York, NY', notice: 'Limited availability', price: 'From $75', available: '500+ tickets', type: 'away' },
+            { month: 'NOV', day: 2, tickets: '450+', team1: 'Pistons', team2: 'Bucks', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'New tickets added', price: 'From $70', available: '450+ tickets', type: 'home' },
+            { month: 'NOV', day: 5, tickets: '400+', team1: 'Pistons', team2: 'Raptors', time: '7:30 PM', location: 'Scotiabank Arena, Toronto, Canada', notice: 'Selling fast', price: 'From $75', available: '400+ tickets', type: 'away' },
+            { month: 'NOV', day: 8, tickets: '350+', team1: 'Pistons', team2: '76ers', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Limited availability', price: 'From $80', available: '350+ tickets', type: 'home' },
+            { month: 'NOV', day: 12, tickets: '500+', team1: 'Pistons', team2: 'Mavericks', time: '8:30 PM', location: 'American Airlines Center, Dallas, TX', notice: 'New tickets added', price: 'From $70', available: '500+ tickets', type: 'away' },
+            { month: 'NOV', day: 15, tickets: '300+', team1: 'Pistons', team2: 'Lakers', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $75', available: '300+ tickets', type: 'home' },
+            { month: 'NOV', day: 18, tickets: '400+', team1: 'Pistons', team2: 'Suns', time: '9:00 PM', location: 'Footprint Center, Phoenix, AZ', notice: 'Limited availability', price: 'From $70', available: '400+ tickets', type: 'away' },
+            { month: 'NOV', day: 21, tickets: '450+', team1: 'Pistons', team2: 'Nuggets', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'New tickets added', price: 'From $65', available: '450+ tickets', type: 'home' },
+            { month: 'NOV', day: 24, tickets: '350+', team1: 'Pistons', team2: 'Cavaliers', time: '7:30 PM', location: 'Rocket Mortgage FieldHouse, Cleveland, OH', notice: 'Selling fast', price: 'From $70', available: '350+ tickets', type: 'away' },
+            { month: 'NOV', day: 27, tickets: '500+', team1: 'Pistons', team2: 'Hornets', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Limited availability', price: 'From $60', available: '500+ tickets', type: 'home' },
+            { month: 'DEC', day: 1, tickets: '450+', team1: 'Pistons', team2: 'Wizards', time: '7:00 PM', location: 'Capital One Arena, Washington, DC', notice: 'New tickets added', price: 'From $65', available: '450+ tickets', type: 'away' },
+            { month: 'DEC', day: 4, tickets: '400+', team1: 'Pistons', team2: 'Clippers', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $65', available: '400+ tickets', type: 'home' },
+            { month: 'DEC', day: 8, tickets: '350+', team1: 'Pistons', team2: 'Warriors', time: '10:30 PM', location: 'Chase Center, San Francisco, CA', notice: 'Limited availability', price: 'From $85', available: '350+ tickets', type: 'away' },
+            { month: 'DEC', day: 11, tickets: '500+', team1: 'Pistons', team2: 'Jazz', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'New tickets added', price: 'From $60', available: '500+ tickets', type: 'home' },
+            { month: 'DEC', day: 14, tickets: '300+', team1: 'Pistons', team2: 'Timberwolves', time: '8:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Selling fast', price: 'From $70', available: '300+ tickets', type: 'away' },
+            { month: 'DEC', day: 18, tickets: '450+', team1: 'Pistons', team2: 'Grizzlies', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Limited availability', price: 'From $65', available: '450+ tickets', type: 'home' },
+            { month: 'DEC', day: 22, tickets: '400+', team1: 'Pistons', team2: 'Pelicans', time: '7:00 PM', location: 'Smoothie King Center, New Orleans, LA', notice: 'New tickets added', price: 'From $70', available: '400+ tickets', type: 'away' },
+            { month: 'DEC', day: 26, tickets: '350+', team1: 'Pistons', team2: 'Nets', time: '7:30 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $75', available: '350+ tickets', type: 'home' },
+            { month: 'DEC', day: 29, tickets: '500+', team1: 'Pistons', team2: 'Rockets', time: '8:00 PM', location: 'Toyota Center, Houston, TX', notice: 'Limited availability', price: 'From $70', available: '500+ tickets', type: 'away' },
+            { month: 'JAN', day: 2, tickets: '450+', team1: 'Pistons', team2: 'Spurs', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'New tickets added', price: 'From $65', available: '450+ tickets', type: 'home' },
+            { month: 'JAN', day: 6, tickets: '400+', team1: 'Pistons', team2: 'Kings', time: '10:00 PM', location: 'Golden 1 Center, Sacramento, CA', notice: 'Selling fast', price: 'From $70', available: '400+ tickets', type: 'away' },
+            { month: 'JAN', day: 10, tickets: '350+', team1: 'Pistons', team2: 'Trail Blazers', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Limited availability', price: 'From $65', available: '350+ tickets', type: 'home' },
+            { month: 'JAN', day: 14, tickets: '500+', team1: 'Pistons', team2: 'Magic', time: '7:00 PM', location: 'Amway Center, Orlando, FL', notice: 'New tickets added', price: 'From $60', available: '500+ tickets', type: 'away' },
+            { month: 'JAN', day: 18, tickets: '450+', team1: 'Pistons', team2: 'Pacers', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $65', available: '450+ tickets', type: 'home' },
+            { month: 'JAN', day: 22, tickets: '400+', team1: 'Pistons', team2: 'Thunder', time: '8:00 PM', location: 'Paycom Center, Oklahoma City, OK', notice: 'Limited availability', price: 'From $70', available: '400+ tickets', type: 'away' },
+            { month: 'JAN', day: 26, tickets: '350+', team1: 'Pistons', team2: 'Hornets', time: '7:00 PM', location: 'Spectrum Center, Charlotte, NC', notice: 'New tickets added', price: 'From $65', available: '350+ tickets', type: 'away' },
+            { month: 'JAN', day: 29, tickets: '500+', team1: 'Pistons', team2: 'Celtics', time: '7:00 PM', location: 'Little Caesars Arena, Detroit, MI', notice: 'Selling fast', price: 'From $75', available: '500+ tickets', type: 'home' },
+            { month: 'FEB', day: 2, tickets: '450+', team1: 'Pistons', team2: 'Bulls', time: '8:00 PM', location: 'United Center, Chicago, IL', notice: 'Limited availability', price: 'From $70', available: '450+ tickets', type: 'away' }
+        ];
+
+   // Function to render games
+        function renderGames(page = 1, gamesPerPage = 4) {
+            const gamesContainer = document.getElementById('games-container');
+            gamesContainer.innerHTML = '';
+            
+            const startIndex = (page - 1) * gamesPerPage;
+            const endIndex = startIndex + gamesPerPage;
+            const gamesToRender = gamesData.slice(startIndex, endIndex);
+            
+            gamesToRender.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                
+                // Determine which team is the Spurs and which is the opponent
+                const isHomeGame = game.team1 === 'Spurs';
+                const spursTeam = isHomeGame ? game.team1 : game.team2;
+                const opponentTeam = isHomeGame ? game.team2 : game.team1;
+                
+                gameCard.innerHTML = `
+                    <div class="game-date">
+                        <div class="month">${game.month}</div>
+                        <div class="day">${game.day}</div>
+                        <div class="ticket-count">${game.tickets}</div>
+                    </div>
+                    <div class="game-details">
+                        <div class="teams">
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[spursTeam]}" alt="${spursTeam}">
+                                </div>
+                                <span>${spursTeam}</span>
+                            </div>
+                            <div class="vs">vs</div>
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[opponentTeam] || 'https://via.placeholder.com/30x30/007A33/FFFFFF?text=NBA'}" alt="${opponentTeam}">
+                                </div>
+                                <span>${opponentTeam}</span>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <div><i class="fas fa-clock"></i> ${game.time}</div>
+                            <div><i class="fas fa-map-marker-alt"></i> ${game.location}</div>
+                        </div>
+                        <div class="ticket-notice">
+                            <i class="fas fa-exclamation-circle"></i> ${game.notice}
+                        </div>
+                    </div>
+                    <div class="game-action">
+                        <div class="price">${game.price}</div>
+                        <a href="/seating.html" class="btn">See Tickets</a>
+                        <div class="tickets-available">${game.available}</div>
+                    </div>
+                `;
+                
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGames(1);
+            
+            // Add pagination event listeners
+            const paginationButtons = document.querySelectorAll('.pagination-btn');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const page = parseInt(button.getAttribute('data-page'));
+                    renderGames(page);
+                    
+                    // Update active state
+                    paginationButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+            
+            // Next and previous buttons
+            document.getElementById('next-page').addEventListener('click', () => {
+                const activePage = parseInt(document.querySelector('.pagination-btn.active').getAttribute('data-page'));
+                if (activePage < 8) {
+                    const nextPage = activePage + 1;
+                    renderGames(nextPage);
+                    
+                    // Update active state
+                    paginationButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`.pagination-btn[data-page="${nextPage}"]`).classList.add('active');
+                }
+            });
+            
+            document.getElementById('prev-page').addEventListener('click', () => {
+                const activePage = parseInt(document.querySelector('.pagination-btn.active').getAttribute('data-page'));
+                if (activePage > 1) {
+                    const prevPage = activePage - 1;
+                    renderGames(prevPage);
+                    
+                    // Update active state
+                    paginationButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`.pagination-btn[data-page="${prevPage}"]`).classList.add('active');
+                }
+            });
+            
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter logic would go here in a real implementation
+                    // For now, we'll just re-render the first page
+                    renderGames(1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

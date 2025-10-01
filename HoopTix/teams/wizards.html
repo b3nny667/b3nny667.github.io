@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washington Wizards Schedule - HoopTix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF8C00;
+            --secondary: #1E3A8A;
+            --accent: #E63946;
+            --light: #F1FAEE;
+            --dark: #457B9D;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --wizards-navy: #002B5C;
+            --wizards-red: #E31837;
+            --wizards-silver: #C4CED4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #E67E00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #15296D;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-promo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-promo i {
+            color: var(--primary);
+        }
+        
+        .top-nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .top-nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 180px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-img img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding-left: 45px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Team Header */
+        .team-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 30px;
+        }
+        
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .team-logo-large {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .team-logo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .team-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .team-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Schedule Section */
+        .schedule-section {
+            padding: 40px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .events-count {
+            background: var(--wizards-navy);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--wizards-navy);
+            color: white;
+        }
+        
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+        }
+        
+        .game-date {
+            width: 100px;
+            background: var(--wizards-navy);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .month {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        
+        .ticket-count {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .game-details {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .teams {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        
+        .team-logo-sm {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .team-logo-sm img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .vs {
+            font-weight: 700;
+            color: var(--gray);
+        }
+        
+        .game-info {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .game-info i {
+            color: var(--primary);
+        }
+        
+        .ticket-notice {
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .ticket-notice i {
+            color: var(--primary);
+        }
+        
+        .game-action {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light-gray);
+            gap: 10px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .tickets-available {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        /* Hottest Event */
+        .hottest-event {
+            background: linear-gradient(135deg, var(--wizards-navy), var(--wizards-red));
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .hottest-date {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .hottest-month {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .hottest-day {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 5px 0;
+        }
+        
+        .hottest-tickets {
+            font-size: 0.9rem;
+        }
+        
+        .hottest-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .hottest-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hottest-teams {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination-btn:hover {
+            background: var(--wizards-navy);
+            color: white;
+        }
+        
+        .pagination-btn.active {
+            background: var(--wizards-navy);
+            color: white;
+        }
+        
+        .pagination-prev, .pagination-next {
+            padding: 10px 15px;
+            border-radius: 30px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pagination-prev:hover, .pagination-next:hover {
+            background: var(--wizards-navy);
+            color: white;
+        }
+        
+        .pagination-info {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Team Bio */
+        .team-bio {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .team-bio h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .team-bio p {
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .game-card {
+                flex-direction: column;
+            }
+            
+            .game-date {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 20px;
+            }
+            
+            .game-action {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .team-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-stats {
+                justify-content: center;
+            }
+            
+            .hottest-event {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .main-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+            
+            .teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .team-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="container top-nav-container">
+            <div class="nav-promo">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Get 10% off your first order! Use code: HOOPS10</span>
+            </div>
+            <div class="top-nav-links">
+                <a href="#">Help Center</a>
+                <a href="#">Sell Tickets</a>
+                <a href="#">My Orders</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- Your logo will go here - background removed -->
+                    <img src="/img/Hooptix Logo.png" alt="HoopTix Logo">
+                </div>
+                <div class="logo-text">Hoop<span>Tix</span></div>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search events, teams, and more">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="/index.html">Home</a>
+                <a href="/games.html">Games</a>
+                <a href="/arenas.html">Arenas</a>
+                <a href="/teams.html">Teams</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Register</a>
+                <a href="#" class="btn">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Team Header -->
+    <section class="team-header">
+        <div class="container">
+            <div class="team-info">
+                <div class="team-logo-large">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Washington_Wizards_logo.svg/640px-Washington_Wizards_logo.svg.png" alt="Washington Wizards">
+                </div>
+                <div class="team-details">
+                    <h1>Washington Wizards</h1>
+                    <p>Capital One Arena • Washington, D.C.</p>
+                    <div class="team-stats">
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Championship</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1961</div>
+                            <div class="stat-label">Founded</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">38</div>
+                            <div class="stat-label">Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Games</h2>
+                <div class="events-count">38 events at Capital One Arena</div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Games</button>
+                <button class="filter-btn" data-filter="home">Home Games</button>
+                <button class="filter-btn" data-filter="away">Away Games</button>
+                <button class="filter-btn" data-filter="tickets">With Tickets</button>
+            </div>
+
+            <!-- Hottest Event -->
+            <div class="hottest-event">
+                <div class="hottest-date">
+                    <div class="hottest-month">NOV</div>
+                    <div class="hottest-day">18</div>
+                    <div class="hottest-tickets">550+ tickets</div>
+                </div>
+                <div class="hottest-details">
+                    <h3>Hottest Event</h3>
+                    <div class="hottest-teams">
+                        <div class="team">
+                            <div class="team-logo-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Washington_Wizards_logo.svg/640px-Washington_Wizards_logo.svg.png" alt="Wizards">
+                            </div>
+                            <span>Wizards</span>
+                        </div>
+                        <div class="vs">vs</div>
+                        <div class="team">
+                            <div class="team-logo-sm">
+<img src="data:image/png;base64,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" alt="">
+                            </div>
+                            <span>Celtics</span>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <div><i class="fas fa-clock"></i> 7:00 PM</div>
+                        <div><i class="fas fa-map-marker-alt"></i> Capital One Arena, Washington, D.C.</div>
+                    </div>
+                </div>
+                <div class="game-action">
+                    <div class="price">From $95</div>
+                    <a href="/seating.html" class="btn">See Tickets</a>
+                </div>
+            </div>
+
+            <!-- Games List -->
+            <div class="games-list" id="games-container">
+                <!-- Games will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-prev" id="prev-page">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+                <button class="pagination-btn" data-page="3">3</button>
+                <button class="pagination-btn" data-page="4">4</button>
+                <button class="pagination-btn" data-page="5">5</button>
+                <button class="pagination-btn" data-page="6">6</button>
+                <button class="pagination-btn" data-page="7">7</button>
+                <button class="pagination-btn" data-page="8">8</button>
+                <span class="pagination-info">Page 1 of 8</span>
+                <button class="pagination-next" id="next-page">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Team Bio -->
+            <div class="team-bio">
+                <h2>About the Washington Wizards</h2>
+                <p>The Washington Wizards are an American professional basketball team based in Washington, D.C. The Wizards compete in the National Basketball Association (NBA) as a member of the league's Eastern Conference Southeast Division. The team plays its home games at the Capital One Arena, in the Chinatown neighborhood of Washington, D.C.</p>
+                <p>The franchise was established in 1961 as the Chicago Packers before becoming the Chicago Zephyrs the following season. In 1963, they moved to Baltimore and became the Baltimore Bullets, taking the name from a previous team of the same name. In 1973, the team moved to the Washington, D.C., area and became the Capital Bullets, then the Washington Bullets the following season. In 1997, they rebranded as the Wizards.</p>
+                <p>The Wizards have won one NBA championship in 1978, led by stars like Wes Unseld and Elvin Hayes. More recently, the team has featured players like Gilbert Arenas, John Wall, Bradley Beal, and Kyle Kuzma.</p>
+                <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>HoopTix</h3>
+                    <p>Your premier destination for basketball game tickets with the best seating experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Teams</a></li>
+                        <li><a href="#">Arenas</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers, free giveaways, and game updates.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" class="btn" style="width:100%">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HoopTix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Team logo mapping
+        const teamLogoMap = {
+            'Wizards': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Washington_Wizards_logo.svg/640px-Washington_Wizards_logo.svg.png',
+            'Celtics': 'data:image/png;base64,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',
+            '76ers': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0e/Philadelphia_76ers_logo.svg/640px-Philadelphia_76ers_logo.svg.png',
+            'Knicks': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/25/New_York_Knicks_logo.svg/640px-New_York_Knicks_logo.svg.png',
+            'Nets': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/640px-Brooklyn_Nets_newlogo.svg.png',
+            'Raptors': 'https://upload.wikimedia.org/wikipedia/en/thumb/3/36/Toronto_Raptors_logo.svg/640px-Toronto_Raptors_logo.svg.png',
+            'Bulls': 'https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Chicago_Bulls_logo.svg/640px-Chicago_Bulls_logo.svg.png',
+            'Cavaliers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/640px-Cleveland_Cavaliers_logo.svg.png',
+            'Pistons': 'data:image/png;base64,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',
+            'Pacers': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Indiana_Pacers.svg/640px-Indiana_Pacers.svg.png',
+            'Bucks': 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Milwaukee_Bucks_logo.svg/640px-Milwaukee_Bucks_logo.svg.png',
+            'Hawks': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Atlanta_Hawks_logo.svg/640px-Atlanta_Hawks_logo.svg.png',
+            'Hornets': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Charlotte_Hornets_%282014%29.svg/640px-Charlotte_Hornets_%282014%29.svg.png',
+            'Heat': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Miami_Heat_logo.svg/640px-Miami_Heat_logo.svg.png',
+            'Magic': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Orlando_Magic_logo.svg/640px-Orlando_Magic_logo.svg.png',
+            'Mavericks': 'https://upload.wikimedia.org/wikipedia/en/thumb/9/97/Dallas_Mavericks_logo.svg/640px-Dallas_Mavericks_logo.svg.png',
+            'Rockets': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/640px-Houston_Rockets.svg.png',
+            'Grizzlies': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/640px-Memphis_Grizzlies.svg.png',
+            'Pelicans': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/640px-New_Orleans_Pelicans_logo.svg.png',
+            'Spurs': 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/640px-San_Antonio_Spurs.svg.png',
+            'Lakers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/640px-Los_Angeles_Lakers_logo.svg.png',
+            'Clippers': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Los_Angeles_Clippers_%282015%29.svg/640px-Los_Angeles_Clippers_%282015%29.svg.png',
+            'Warriors': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Golden_State_Warriors_logo.svg/640px-Golden_State_Warriors_logo.svg.png',
+            'Suns': 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Phoenix_Suns_logo.svg/640px-Phoenix_Suns_logo.svg.png',
+            'Kings': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/SacramentoKings.svg/640px-SacramentoKings.svg.png',
+            'Timberwolves': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/640px-Minnesota_Timberwolves_logo.svg.png',
+            'Nuggets': 'https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Denver_Nuggets.svg/640px-Denver_Nuggets.svg.png',
+            'Trail Blazers': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/640px-Portland_Trail_Blazers_logo.svg.png',
+            'Thunder': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Oklahoma_City_Thunder.svg/640px-Oklahoma_City_Thunder.svg.png',
+            'Jazz': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Utah_Jazz_logo_2022.svg/640px-Utah_Jazz_logo_2022.svg.png'
+        };
+
+        // Game data - 32 games for 8 pages (4 per page)
+        const gamesData = [
+            { month: 'OCT', day: 10, tickets: '500+', team1: 'Wizards', team2: 'Celtics', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Season opener - limited tickets', price: 'From $95', available: '500+ tickets', type: 'home' },
+            { month: 'OCT', day: 14, tickets: '600+', team1: 'Wizards', team2: '76ers', time: '7:30 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Division rivalry', price: 'From $105', available: '600+ tickets', type: 'home' },
+            { month: 'OCT', day: 18, tickets: '450+', team1: 'Knicks', team2: 'Wizards', time: '7:30 PM', location: 'Madison Square Garden, New York', notice: 'Away game', price: 'From $120', available: '450+ tickets', type: 'away' },
+            { month: 'OCT', day: 22, tickets: '700+', team1: 'Wizards', team2: 'Nets', time: '6:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Weekend special', price: 'From $85', available: '700+ tickets', type: 'home' },
+            { month: 'OCT', day: 25, tickets: '550+', team1: 'Raptors', team2: 'Wizards', time: '7:00 PM', location: 'Scotiabank Arena, Toronto', notice: 'Away game', price: 'From $110', available: '550+ tickets', type: 'away' },
+            { month: 'OCT', day: 29, tickets: '800+', team1: 'Wizards', team2: 'Bulls', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Halloween special', price: 'From $75', available: '800+ tickets', type: 'home' },
+            { month: 'NOV', day: 2, tickets: '400+', team1: 'Cavaliers', team2: 'Wizards', time: '7:30 PM', location: 'Rocket Mortgage FieldHouse, Cleveland', notice: 'Away game', price: 'From $95', available: '400+ tickets', type: 'away' },
+            { month: 'NOV', day: 5, tickets: '650+', team1: 'Wizards', team2: 'Pistons', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Family night', price: 'From $65', available: '650+ tickets', type: 'home' },
+            { month: 'NOV', day: 9, tickets: '500+', team1: 'Pacers', team2: 'Wizards', time: '7:00 PM', location: 'Gainbridge Fieldhouse, Indianapolis', notice: 'Away game', price: 'From $90', available: '500+ tickets', type: 'away' },
+            { month: 'NOV', day: 12, tickets: '750+', team1: 'Wizards', team2: 'Bucks', time: '7:30 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Star player appearance', price: 'From $115', available: '750+ tickets', type: 'home' },
+            { month: 'NOV', day: 15, tickets: '600+', team1: 'Hawks', team2: 'Wizards', time: '7:30 PM', location: 'State Farm Arena, Atlanta', notice: 'Away game', price: 'From $100', available: '600+ tickets', type: 'away' },
+            { month: 'NOV', day: 18, tickets: '550+', team1: 'Wizards', team2: 'Celtics', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Premium matchup', price: 'From $125', available: '550+ tickets', type: 'home' },
+            { month: 'NOV', day: 22, tickets: '700+', team1: 'Wizards', team2: 'Hornets', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Thanksgiving special', price: 'From $80', available: '700+ tickets', type: 'home' },
+            { month: 'NOV', day: 25, tickets: '450+', team1: 'Heat', team2: 'Wizards', time: '8:00 PM', location: 'FTX Arena, Miami', notice: 'Away game', price: 'From $110', available: '450+ tickets', type: 'away' },
+            { month: 'NOV', day: 28, tickets: '500+', team1: 'Magic', team2: 'Wizards', time: '7:00 PM', location: 'Amway Center, Orlando', notice: 'Away game', price: 'From $85', available: '500+ tickets', type: 'away' },
+            { month: 'DEC', day: 2, tickets: '800+', team1: 'Wizards', team2: 'Mavericks', time: '7:30 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Weekend game', price: 'From $95', available: '800+ tickets', type: 'home' },
+            { month: 'DEC', day: 6, tickets: '600+', team1: 'Wizards', team2: 'Rockets', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Student night', price: 'From $70', available: '600+ tickets', type: 'home' },
+            { month: 'DEC', day: 10, tickets: '550+', team1: 'Grizzlies', team2: 'Wizards', time: '8:00 PM', location: 'FedExForum, Memphis', notice: 'Away game', price: 'From $100', available: '550+ tickets', type: 'away' },
+            { month: 'DEC', day: 14, tickets: '700+', team1: 'Wizards', team2: 'Pelicans', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Holiday special', price: 'From $90', available: '700+ tickets', type: 'home' },
+            { month: 'DEC', day: 18, tickets: '500+', team1: 'Spurs', team2: 'Wizards', time: '8:30 PM', location: 'AT&T Center, San Antonio', notice: 'Away game', price: 'From $85', available: '500+ tickets', type: 'away' },
+            { month: 'DEC', day: 22, tickets: '750+', team1: 'Wizards', team2: 'Lakers', time: '7:30 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Premium matchup', price: 'From $150', available: '750+ tickets', type: 'home' },
+            { month: 'DEC', day: 26, tickets: '600+', team1: 'Clippers', team2: 'Wizards', time: '10:30 PM', location: 'Crypto.com Arena, Los Angeles', notice: 'Away game', price: 'From $120', available: '600+ tickets', type: 'away' },
+            { month: 'DEC', day: 29, tickets: '550+', team1: 'Warriors', team2: 'Wizards', time: '10:00 PM', location: 'Chase Center, San Francisco', notice: 'Away game', price: 'From $130', available: '550+ tickets', type: 'away' },
+            { month: 'JAN', day: 3, tickets: '800+', team1: 'Wizards', team2: 'Suns', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'New Year special', price: 'From $95', available: '800+ tickets', type: 'home' },
+            { month: 'JAN', day: 7, tickets: '650+', team1: 'Kings', team2: 'Wizards', time: '10:00 PM', location: 'Golden 1 Center, Sacramento', notice: 'Away game', price: 'From $90', available: '650+ tickets', type: 'away' },
+            { month: 'JAN', day: 12, tickets: '700+', team1: 'Wizards', team2: 'Timberwolves', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Fan appreciation', price: 'From $75', available: '700+ tickets', type: 'home' },
+            { month: 'JAN', day: 16, tickets: '500+', team1: 'Nuggets', team2: 'Wizards', time: '9:00 PM', location: 'Ball Arena, Denver', notice: 'Away game', price: 'From $100', available: '500+ tickets', type: 'away' },
+            { month: 'JAN', day: 20, tickets: '600+', team1: 'Trail Blazers', team2: 'Wizards', time: '10:00 PM', location: 'Moda Center, Portland', notice: 'Away game', price: 'From $95', available: '600+ tickets', type: 'away' },
+            { month: 'JAN', day: 24, tickets: '750+', team1: 'Wizards', team2: 'Thunder', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Weeknight special', price: 'From $65', available: '750+ tickets', type: 'home' },
+            { month: 'JAN', day: 28, tickets: '550+', team1: 'Jazz', team2: 'Wizards', time: '9:00 PM', location: 'Vivint Arena, Salt Lake City', notice: 'Away game', price: 'From $85', available: '550+ tickets', type: 'away' },
+            { month: 'FEB', day: 2, tickets: '800+', team1: 'Wizards', team2: 'Nets', time: '7:30 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Rivalry game', price: 'From $105', available: '800+ tickets', type: 'home' },
+            { month: 'FEB', day: 5, tickets: '600+', team1: 'Wizards', team2: '76ers', time: '7:00 PM', location: 'Capital One Arena, Washington, D.C.', notice: 'Division matchup', price: 'From $110', available: '600+ tickets', type: 'home' }
+        ];
+
+        // Function to render games
+        function renderGames(page = 1, gamesPerPage = 4) {
+            const gamesContainer = document.getElementById('games-container');
+            gamesContainer.innerHTML = '';
+            
+            const startIndex = (page - 1) * gamesPerPage;
+            const endIndex = startIndex + gamesPerPage;
+            const gamesToRender = gamesData.slice(startIndex, endIndex);
+            
+            gamesToRender.forEach(game => {
+                const isHomeGame = game.type === 'home';
+                const homeTeam = isHomeGame ? game.team1 : game.team2;
+                const awayTeam = isHomeGame ? game.team2 : game.team1;
+                
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <div class="game-date">
+                        <div class="month">${game.month}</div>
+                        <div class="day">${game.day}</div>
+                        <div class="ticket-count">${game.tickets}</div>
+                    </div>
+                    <div class="game-details">
+                        <div class="teams">
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[homeTeam]}" alt="${homeTeam}">
+                                </div>
+                                <span>${homeTeam}</span>
+                            </div>
+                            <div class="vs">vs</div>
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[awayTeam]}" alt="${awayTeam}">
+                                </div>
+                                <span>${awayTeam}</span>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <div><i class="fas fa-clock"></i> ${game.time}</div>
+                            <div><i class="fas fa-map-marker-alt"></i> ${game.location}</div>
+                        </div>
+                        <div class="ticket-notice">
+                            <i class="fas fa-info-circle"></i> ${game.notice}
+                        </div>
+                    </div>
+                    <div class="game-action">
+                        <div class="price">${game.price}</div>
+                        <a href="/seating.html" class="btn">See Tickets</a>
+                        <div class="tickets-available">${game.available}</div>
+                    </div>
+                `;
+                
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderGames(1);
+            
+            // Add event listeners to pagination buttons
+            const paginationButtons = document.querySelectorAll('.pagination-btn');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    
+                    // Update active state
+                    paginationButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update page info
+                    document.querySelector('.pagination-info').textContent = `Page ${page} of 8`;
+                    
+                    // Render games for the selected page
+                    renderGames(page);
+                });
+            });
+            
+            // Next and previous buttons
+            document.getElementById('next-page').addEventListener('click', function() {
+                const activePage = parseInt(document.querySelector('.pagination-btn.active').getAttribute('data-page'));
+                if (activePage < 8) {
+                    document.querySelector(`.pagination-btn[data-page="${activePage + 1}"]`).click();
+                }
+            });
+            
+            document.getElementById('prev-page').addEventListener('click', function() {
+                const activePage = parseInt(document.querySelector('.pagination-btn.active').getAttribute('data-page'));
+                if (activePage > 1) {
+                    document.querySelector(`.pagination-btn[data-page="${activePage - 1}"]`).click();
+                }
+            });
+            
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real implementation, this would filter the games
+                    // For this demo, we'll just show a message
+                    const filter = this.getAttribute('data-filter');
+                    alert(`Filtering by: ${filter}. This would filter the games in a real implementation.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

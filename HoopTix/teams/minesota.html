@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minnesota Timberwolves Schedule - HoopTix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #236192;   /* Timberwolves blue */
+            --secondary: #0C2340; /* Timberwolves navy */
+            --accent: #9EA2A2;    /* Timberwolves silver */
+            --light: #F1FAEE;
+            --dark: #78BE20;      /* Timberwolves green */
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --twolves-blue: #236192;
+            --twolves-navy: #0C2340;
+            --twolves-silver: #9EA2A2;
+            --twolves-green: #78BE20;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(35, 97, 146, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(158, 162, 162, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10,10 L90,10 L90,90 L10,90 Z' fill='none' stroke='%23236192' stroke-width='0.5' stroke-dasharray='5,5'/%3E%3Cpath d='M50,10 L50,90 M10,50 L90,50' fill='none' stroke='%239EA2A2' stroke-width='0.3'/%3E%3Ccircle cx='50' cy='50' r='38' fill='none' stroke='%230C2340' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #1A5085;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #081A33;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-promo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-promo i {
+            color: var(--accent);
+        }
+        
+        .top-nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .top-nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 180px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-img img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding-left: 45px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Team Header */
+        .team-header {
+            background: linear-gradient(rgba(12, 35, 64, 0.9), rgba(12, 35, 64, 0.95)), url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 30px;
+        }
+        
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .team-logo-large {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .team-logo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .team-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .team-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Schedule Section */
+        .schedule-section {
+            padding: 40px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .events-count {
+            background: var(--twolves-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--twolves-blue);
+            color: white;
+        }
+        
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+        }
+        
+        .game-date {
+            width: 100px;
+            background: var(--twolves-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .month {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        
+        .ticket-count {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .game-details {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .teams {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        
+        .team-logo-sm {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .team-logo-sm img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .vs {
+            font-weight: 700;
+            color: var(--gray);
+        }
+        
+        .game-info {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .game-info i {
+            color: var(--primary);
+        }
+        
+        .ticket-notice {
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .ticket-notice i {
+            color: var(--primary);
+        }
+        
+        .game-action {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light-gray);
+            gap: 10px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .tickets-available {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        /* Hottest Event */
+        .hottest-event {
+            background: linear-gradient(135deg, var(--twolves-blue), var(--accent));
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .hottest-date {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .hottest-month {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .hottest-day {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 5px 0;
+        }
+        
+        .hottest-tickets {
+            font-size: 0.9rem;
+        }
+        
+        .hottest-details {
+            flex-grow: 1;
+        }
+        
+        .hottest-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hottest-teams {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination-btn:hover {
+            background: var(--twolves-blue);
+            color: white;
+        }
+        
+        .pagination-btn.active {
+            background: var(--twolves-blue);
+            color: white;
+        }
+        
+        .pagination-prev, .pagination-next {
+            padding: 10px 15px;
+            border-radius: 30px;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pagination-prev:hover, .pagination-next:hover {
+            background: var(--twolves-blue);
+            color: white;
+        }
+        
+        .pagination-info {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Team Bio */
+        .team-bio {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .team-bio h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .team-bio p {
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .game-card {
+                flex-direction: column;
+            }
+            
+            .game-date {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 20px;
+            }
+            
+            .game-action {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .team-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-stats {
+                justify-content: center;
+            }
+            
+            .hottest-event {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .main-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+            
+            .teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .team-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="container top-nav-container">
+            <div class="nav-promo">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Get 10% off your first order! Use code: HOOPS10</span>
+            </div>
+            <div class="top-nav-links">
+                <a href="#">Help Center</a>
+                <a href="#">Sell Tickets</a>
+                <a href="#">My Orders</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- Your logo will go here - background removed -->
+                    <img src="/img/Hooptix Logo.png" alt="HoopTix Logo">
+                </div>
+                <div class="logo-text">Hoop<span>Tix</span></div>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search events, teams, and more">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="/index.html">Home</a>
+                <a href="/games.html">Games</a>
+                <a href="/arenas.html">Arenas</a>
+                <a href="/teams.html">Teams</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Register</a>
+                <a href="#" class="btn">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Team Header -->
+    <section class="team-header">
+        <div class="container">
+            <div class="team-info">
+                <div class="team-logo-large">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/640px-Minnesota_Timberwolves_logo.svg.png" alt="Minnesota Timberwolves">
+                </div>
+                <div class="team-details">
+                    <h1>Minnesota Timberwolves</h1>
+                    <p>Target Center • Minneapolis, MN</p>
+                    <div class="team-stats">
+                        <div class="stat">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Championships</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1989</div>
+                            <div class="stat-label">Founded</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">41</div>
+                            <div class="stat-label">Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Games</h2>
+                <div class="events-count">41 events at Target Center</div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Games</button>
+                <button class="filter-btn" data-filter="home">Home Games</button>
+                <button class="filter-btn" data-filter="away">Away Games</button>
+                <button class="filter-btn" data-filter="tickets">With Tickets</button>
+            </div>
+
+            <!-- Hottest Event -->
+            <div class="hottest-event">
+                <div class="hottest-date">
+                    <div class="hottest-month">NOV</div>
+                    <div class="hottest-day">22</div>
+                    <div class="hottest-tickets">700+ tickets</div>
+                </div>
+                <div class="hottest-details">
+                    <h3>Hottest Event</h3>
+                    <div class="hottest-teams">
+                        <div class="team">
+                            <div class="team-logo-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/640px-Minnesota_Timberwolves_logo.svg.png" alt="Timberwolves">
+                            </div>
+                            <span>Timberwolves</span>
+                        </div>
+                        <div class="vs">vs</div>
+                        <div class="team">
+                            <div class="team-logo-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Denver_Nuggets.svg/640px-Denver_Nuggets.svg.png" alt="Nuggets">
+                            </div>
+                            <span>Nuggets</span>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <div><i class="fas fa-clock"></i> 7:00 PM</div>
+                        <div><i class="fas fa-map-marker-alt"></i> Target Center, Minneapolis, MN</div>
+                    </div>
+                </div>
+                <div class="game-action">
+                    <div class="price">From $105</div>
+                    <a href="/seating.html" class="btn">See Tickets</a>
+                </div>
+            </div>
+
+            <!-- Games List -->
+            <div class="games-list" id="games-container">
+                <!-- Games will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-prev" id="prev-page">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+                <button class="pagination-btn" data-page="3">3</button>
+                <button class="pagination-btn" data-page="4">4</button>
+                <button class="pagination-btn" data-page="5">5</button>
+                <button class="pagination-btn" data-page="6">6</button>
+                <button class="pagination-btn" data-page="7">7</button>
+                <button class="pagination-btn" data-page="8">8</button>
+                <span class="pagination-info">Page 1 of 8</span>
+                <button class="pagination-next" id="next-page">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Team Bio -->
+            <div class="team-bio">
+                <h2>About the Minnesota Timberwolves</h2>
+                <p>The Minnesota Timberwolves are an American professional basketball team based in Minneapolis. The Timberwolves compete in the National Basketball Association (NBA) as a member of the Western Conference Northwest Division. Founded in 1989, the team plays its home games at Target Center, their home since 1990.</p>
+                <p>The Timberwolves have made the playoffs in multiple seasons throughout their history. Like the Memphis Grizzlies, the Timberwolves have made it to the Western Conference Finals once, in 2004. The team is owned by Glen Taylor and has been led by stars such as Kevin Garnett, Kevin Love, and Karl-Anthony Towns.</p>
+                <p>The team's colors are Midnight Blue, Lake Blue, Aurora Green, and Moonlight Grey. The Timberwolves have developed rivalries with other Northwest Division teams, particularly the Denver Nuggets and Utah Jazz.</p>
+                <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>HoopTix</h3>
+                    <p>Your premier destination for basketball game tickets with the best seating experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Teams</a></li>
+                        <li><a href="#">Arenas</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers, free giveaways, and game updates.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" class="btn" style="width:100%">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HoopTix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Team logo mapping
+        const teamLogoMap = {
+            'Timberwolves': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/640px-Minnesota_Timberwolves_logo.svg.png',
+            'Pelicans': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/640px-New_Orleans_Pelicans_logo.svg.png',
+            'Nuggets': 'https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Denver_Nuggets.svg/640px-Denver_Nuggets.svg.png',
+            'Mavericks': 'https://upload.wikimedia.org/wikipedia/en/thumb/9/97/Dallas_Mavericks_logo.svg/640px-Dallas_Mavericks_logo.svg.png',
+            'Rockets': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/640px-Houston_Rockets.svg.png',
+            'Warriors': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Golden_State_Warriors_logo.svg/640px-Golden_State_Warriors_logo.svg.png',
+            'Trail Blazers': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/640px-Portland_Trail_Blazers_logo.svg.png',
+            'Jazz': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Utah_Jazz_logo_2022.svg/640px-Utah_Jazz_logo_2022.svg.png',
+            'Suns': 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Phoenix_Suns_logo.svg/640px-Phoenix_Suns_logo.svg.png',
+            'Clippers': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Los_Angeles_Clippers_%282015%29.svg/640px-Los_Angeles_Clippers_%282015%29.svg.png',
+            'Bucks': 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Milwaukee_Bucks_logo.svg/640px-Milwaukee_Bucks_logo.svg.png',
+            'Lakers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/640px-Los_Angeles_Lakers_logo.svg.png',
+            'Kings': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/SacramentoKings.svg/640px-SacramentoKings.svg.png',
+            'Grizzlies': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/640px-Memphis_Grizzlies.svg.png',
+            'Spurs': 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/640px-San_Antonio_Spurs.svg.png',
+            'Heat': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Miami_Heat_logo.svg/640px-Miami_Heat_logo.svg.png',
+            'Bulls': 'https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Chicago_Bulls_logo.svg/640px-Chicago_Bulls_logo.svg.png',
+            'Cavaliers': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/640px-Cleveland_Cavaliers_logo.svg.png',
+            'Knicks': 'https://upload.wikimedia.org/wikipedia/en/thumb/2/25/New_York_Knicks_logo.svg/640px-New_York_Knicks_logo.svg.png',
+            'Thunder': 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Oklahoma_City_Thunder.svg/640px-Oklahoma_City_Thunder.svg.png',
+            'Hornets': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Charlotte_Hornets_%282014%29.svg/640px-Charlotte_Hornets_%282014%29.svg.png',
+            'Celtics': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Boston_Celtics_logo.svg/640px-Boston_Celtics_logo.svg.png',
+            'Raptors': 'https://upload.wikimedia.org/wikipedia/en/thumb/3/36/Toronto_Raptors_logo.svg/640px-Toronto_Raptors_logo.svg.png',
+            '76ers': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0e/Philadelphia_76ers_logo.svg/640px-Philadelphia_76ers_logo.svg.png',
+            'Pacers': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Indiana_Pacers.svg/640px-Indiana_Pacers.svg.png',
+            'Magic': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Orlando_Magic_logo.svg/640px-Orlando_Magic_logo.svg.png',
+            'Wizards': 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Washington_Wizards_logo.svg/640px-Washington_Wizards_logo.svg.png'
+        };
+
+        // Game data - 32 games for 8 pages (4 per page)
+        const gamesData = [
+            { month: 'OCT', day: 14, tickets: '500+', team1: 'Timberwolves', team2: 'Pelicans', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Opening night - limited tickets', price: 'From $85', available: '500+ tickets', type: 'home' },
+            { month: 'OCT', day: 17, tickets: '600+', team1: 'Timberwolves', team2: 'Nuggets', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Rivalry game', price: 'From $95', available: '600+ tickets', type: 'home' },
+            { month: 'OCT', day: 20, tickets: '450+', team1: 'Mavericks', team2: 'Timberwolves', time: '7:30 PM', location: 'American Airlines Center, Dallas, TX', notice: 'Limited availability', price: 'From $75', available: '450+ tickets', type: 'away' },
+            { month: 'OCT', day: 24, tickets: '550+', team1: 'Timberwolves', team2: 'Rockets', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $80', available: '550+ tickets', type: 'home' },
+            { month: 'OCT', day: 27, tickets: '400+', team1: 'Warriors', team2: 'Timberwolves', time: '9:00 PM', location: 'Chase Center, San Francisco, CA', notice: 'Selling fast', price: 'From $90', available: '400+ tickets', type: 'away' },
+            { month: 'OCT', day: 31, tickets: '500+', team1: 'Trail Blazers', team2: 'Timberwolves', time: '8:00 PM', location: 'Moda Center, Portland, OR', notice: 'Limited availability', price: 'From $85', available: '500+ tickets', type: 'away' },
+            { month: 'NOV', day: 3, tickets: '450+', team1: 'Timberwolves', team2: 'Jazz', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $75', available: '450+ tickets', type: 'home' },
+            { month: 'NOV', day: 7, tickets: '400+', team1: 'Suns', team2: 'Timberwolves', time: '8:00 PM', location: 'Footprint Center, Phoenix, AZ', notice: 'Selling fast', price: 'From $80', available: '400+ tickets', type: 'away' },
+            { month: 'NOV', day: 10, tickets: '350+', team1: 'Clippers', team2: 'Timberwolves', time: '9:30 PM', location: 'Crypto.com Arena, Los Angeles, CA', notice: 'Limited availability', price: 'From $100', available: '350+ tickets', type: 'away' },
+            { month: 'NOV', day: 14, tickets: '500+', team1: 'Timberwolves', team2: 'Bucks', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $95', available: '500+ tickets', type: 'home' },
+            { month: 'NOV', day: 18, tickets: '300+', team1: 'Lakers', team2: 'Timberwolves', time: '9:30 PM', location: 'Crypto.com Arena, Los Angeles, CA', notice: 'Selling fast', price: 'From $115', available: '300+ tickets', type: 'away' },
+            { month: 'NOV', day: 22, tickets: '700+', team1: 'Timberwolves', team2: 'Nuggets', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Premium matchup', price: 'From $105', available: '700+ tickets', type: 'home' },
+            { month: 'NOV', day: 25, tickets: '450+', team1: 'Timberwolves', team2: 'Kings', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $85', available: '450+ tickets', type: 'home' },
+            { month: 'NOV', day: 28, tickets: '350+', team1: 'Grizzlies', team2: 'Timberwolves', time: '7:00 PM', location: 'FedExForum, Memphis, TN', notice: 'Selling fast', price: 'From $75', available: '350+ tickets', type: 'away' },
+            { month: 'DEC', day: 2, tickets: '500+', team1: 'Spurs', team2: 'Timberwolves', time: '7:30 PM', location: 'AT&T Center, San Antonio, TX', notice: 'Limited availability', price: 'From $80', available: '500+ tickets', type: 'away' },
+            { month: 'DEC', day: 5, tickets: '450+', team1: 'Timberwolves', team2: 'Heat', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $90', available: '450+ tickets', type: 'home' },
+            { month: 'DEC', day: 9, tickets: '400+', team1: 'Bulls', team2: 'Timberwolves', time: '7:00 PM', location: 'United Center, Chicago, IL', notice: 'Selling fast', price: 'From $85', available: '400+ tickets', type: 'away' },
+            { month: 'DEC', day: 12, tickets: '350+', team1: 'Timberwolves', team2: 'Cavaliers', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Limited availability', price: 'From $75', available: '350+ tickets', type: 'home' },
+            { month: 'DEC', day: 16, tickets: '550+', team1: 'Knicks', team2: 'Timberwolves', time: '6:30 PM', location: 'Madison Square Garden, New York, NY', notice: 'New tickets added', price: 'From $95', available: '550+ tickets', type: 'away' },
+            { month: 'DEC', day: 20, tickets: '500+', team1: 'Timberwolves', team2: 'Thunder', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Selling fast', price: 'From $80', available: '500+ tickets', type: 'home' },
+            { month: 'DEC', day: 23, tickets: '450+', team1: 'Timberwolves', team2: 'Warriors', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Rivalry game', price: 'From $100', available: '450+ tickets', type: 'home' },
+            { month: 'DEC', day: 27, tickets: '400+', team1: 'Nuggets', team2: 'Timberwolves', time: '8:00 PM', location: 'Ball Arena, Denver, CO', notice: 'Limited availability', price: 'From $85', available: '400+ tickets', type: 'away' },
+            { month: 'DEC', day: 30, tickets: '350+', team1: 'Timberwolves', team2: 'Suns', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $90', available: '350+ tickets', type: 'home' },
+            { month: 'JAN', day: 4, tickets: '500+', team1: 'Timberwolves', team2: 'Hornets', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Selling fast', price: 'From $75', available: '500+ tickets', type: 'home' },
+            { month: 'JAN', day: 8, tickets: '450+', team1: 'Celtics', team2: 'Timberwolves', time: '6:00 PM', location: 'TD Garden, Boston, MA', notice: 'Limited availability', price: 'From $95', available: '450+ tickets', type: 'away' },
+            { month: 'JAN', day: 13, tickets: '400+', team1: 'Timberwolves', team2: 'Mavericks', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'New tickets added', price: 'From $85', available: '400+ tickets', type: 'home' },
+            { month: 'JAN', day: 17, tickets: '350+', team1: 'Timberwolves', team2: 'Raptors', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Selling fast', price: 'From $80', available: '350+ tickets', type: 'home' },
+            { month: 'JAN', day: 21, tickets: '500+', team1: '76ers', team2: 'Timberwolves', time: '6:00 PM', location: 'Wells Fargo Center, Philadelphia, PA', notice: 'Limited availability', price: 'From $90', available: '500+ tickets', type: 'away' },
+            { month: 'JAN', day: 25, tickets: '450+', team1: 'Pacers', team2: 'Timberwolves', time: '6:00 PM', location: 'Gainbridge Fieldhouse, Indianapolis, IN', notice: 'New tickets added', price: 'From $75', available: '450+ tickets', type: 'away' },
+            { month: 'JAN', day: 29, tickets: '400+', team1: 'Timberwolves', team2: 'Grizzlies', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Selling fast', price: 'From $85', available: '400+ tickets', type: 'home' },
+            { month: 'FEB', day: 3, tickets: '350+', team1: 'Timberwolves', team2: 'Clippers', time: '7:00 PM', location: 'Target Center, Minneapolis, MN', notice: 'Limited availability', price: 'From $95', available: '350+ tickets', type: 'home' },
+            { month: 'FEB', day: 7, tickets: '500+', team1: 'Magic', team2: 'Timberwolves', time: '6:00 PM', location: 'Amway Center, Orlando, FL', notice: 'New tickets added', price: 'From $80', available: '500+ tickets', type: 'away' }
+        ];
+
+        // Function to generate game cards
+        function generateGameCards(games) {
+            const gamesContainer = document.getElementById('games-container');
+            gamesContainer.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                
+                gameCard.innerHTML = `
+                    <div class="game-date">
+                        <div class="month">${game.month}</div>
+                        <div class="day">${game.day}</div>
+                        <div class="ticket-count">${game.tickets}</div>
+                    </div>
+                    <div class="game-details">
+                        <div class="teams">
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[game.team1]}" alt="${game.team1}">
+                                </div>
+                                <span>${game.team1}</span>
+                            </div>
+                            <div class="vs">vs</div>
+                            <div class="team">
+                                <div class="team-logo-sm">
+                                    <img src="${teamLogoMap[game.team2]}" alt="${game.team2}">
+                                </div>
+                                <span>${game.team2}</span>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <div><i class="fas fa-clock"></i> ${game.time}</div>
+                            <div><i class="fas fa-map-marker-alt"></i> ${game.location}</div>
+                        </div>
+                        <div class="ticket-notice">
+                            <i class="fas fa-info-circle"></i> ${game.notice}
+                        </div>
+                    </div>
+                    <div class="game-action">
+                        <div class="price">${game.price}</div>
+                        <div class="tickets-available">${game.available}</div>
+                        <a href="/seating.html" class="btn">See Tickets</a>
+                    </div>
+                `;
+                
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+
+        // Initialize with first 4 games
+        generateGameCards(gamesData.slice(0, 4));
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                if (filter === 'all') {
+                    generateGameCards(gamesData.slice(0, 4));
+                } else if (filter === 'home') {
+                    const homeGames = gamesData.filter(game => game.type === 'home').slice(0, 4);
+                    generateGameCards(homeGames);
+                } else if (filter === 'away') {
+                    const awayGames = gamesData.filter(game => game.type === 'away').slice(0, 4);
+                    generateGameCards(awayGames);
+                } else if (filter === 'tickets') {
+                    // For demo purposes, just show the first 4 games
+                    generateGameCards(gamesData.slice(0, 4));
+                }
+            });
+        });
+
+        // Pagination functionality
+        const paginationButtons = document.querySelectorAll('.pagination-btn');
+        const prevButton = document.getElementById('prev-page');
+        const nextButton = document.getElementById('next-page');
+        let currentPage = 1;
+
+        function updatePagination() {
+            // Update active state
+            paginationButtons.forEach(button => {
+                const pageNum = parseInt(button.getAttribute('data-page'));
+                button.classList.toggle('active', pageNum === currentPage);
+            });
+            
+            // Update games shown
+            const startIndex = (currentPage - 1) * 4;
+            const endIndex = startIndex + 4;
+            generateGameCards(gamesData.slice(startIndex, endIndex));
+        }
+
+        paginationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                currentPage = parseInt(button.getAttribute('data-page'));
+                updatePagination();
+            });
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePagination();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < 8) {
+                currentPage++;
+                updatePagination();
+            }
+        });
+    </script>
+</body>
+</html>
