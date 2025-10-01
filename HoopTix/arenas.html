@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Arenas - HoopTix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF8C00;
+            --secondary: #1E3A8A;
+            --accent: #E63946;
+            --light: #F1FAEE;
+            --dark: #457B9D;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.92);
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #E67E00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #15296D;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-promo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-promo i {
+            color: var(--primary);
+        }
+        
+        .top-nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .top-nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 180px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-img img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding-left: 45px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.95));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Arena Filters */
+        .arena-filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        /* Arenas Grid */
+        .arenas-section {
+            padding: 30px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .arenas-count {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .arenas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .arena-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .arena-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .arena-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .arena-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .arena-card:hover .arena-image img {
+            transform: scale(1.05);
+        }
+        
+        .arena-team {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .arena-details {
+            padding: 20px;
+        }
+        
+        .arena-name {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .arena-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .arena-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .arena-info-item i {
+            color: var(--primary);
+            width: 16px;
+        }
+        
+        .arena-capacity {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+        
+        .arena-capacity i {
+            color: var(--primary);
+        }
+        
+        .arena-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .arenas-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .main-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filter-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .filter-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .arenas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .arena-actions {
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div class="container top-nav-container">
+                <div class="nav-promo">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Get 10% off your first order! Use code: HOOPS10</span>
+                </div>
+                <div class="top-nav-links">
+                    <a href="#">Help Center</a>
+                    <a href="#">Sell Tickets</a>
+                    <a href="#">My Orders</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="/img/Hooptix Logo.png" alt="HoopTix Logo">
+                    </div>
+                    <div class="logo-text">Hoop<span>Tix</span></div>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search arenas, locations, and more">
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="games.html">Games</a>
+                    <a href="arenas.html" class="active">Arenas</a>
+                    <a href="teams.html">Teams</a>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <a href="register.html" class="btn btn-outline">Register</a>
+                    <a href="sign.html" class="btn">Sign In</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>NBA Arenas & Venues</h1>
+                <p>Explore the most iconic basketball arenas in the NBA and find upcoming events at each location</p>
+            </div>
+        </section>
+
+        <!-- Arena Filters -->
+        <section class="arena-filters">
+            <div class="container">
+                <div class="filter-header">
+                    <h2 class="filter-title">Find Your Arena</h2>
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label class="filter-label">Conference</label>
+                            <select class="filter-select" id="conference-filter">
+                                <option value="all">All Conferences</option>
+                                <option value="eastern">Eastern Conference</option>
+                                <option value="western">Western Conference</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Division</label>
+                            <select class="filter-select" id="division-filter">
+                                <option value="all">All Divisions</option>
+                                <option value="atlantic">Atlantic</option>
+                                <option value="central">Central</option>
+                                <option value="southeast">Southeast</option>
+                                <option value="northwest">Northwest</option>
+                                <option value="pacific">Pacific</option>
+                                <option value="southwest">Southwest</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Sort By</label>
+                            <select class="filter-select" id="sort-filter">
+                                <option value="name">Arena Name</option>
+                                <option value="team">Team Name</option>
+                                <option value="capacity">Largest Capacity</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arenas Section -->
+        <section class="arenas-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">NBA Arenas</h2>
+                    <div class="arenas-count" id="arenas-count">30 arenas</div>
+                </div>
+
+                <div class="arenas-grid" id="arenas-container">
+                    <!-- Arena cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>HoopTix</h3>
+                        <p>Your premier destination for basketball game tickets with the best seating experience.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="games.html">Games</a></li>
+                            <li><a href="arenas.html">Arenas</a></li>
+                            <li><a href="#">Teams</a></li>
+                            <li><a href="#">My Account</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Shipping & Delivery</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to get special offers, free giveaways, and game updates.</p>
+                        <form>
+                            <input type="email" placeholder="Your email address" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                            <button type="submit" class="btn" style="width:100%">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2023 HoopTix. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Arena data for all 30 NBA teams
+        const arenasData = [
+            {
+                id: 1,
+                name: "State Farm Arena",
+                team: "Atlanta Hawks",
+                location: "Atlanta, GA",
+                capacity: "16,600",
+                conference: "eastern",
+                division: "southeast",
+                image: "https://cdn.nba.com/teams/legacy/www.nba.com/hawks/sites/hawks/files/10-18-prismview-hawks-2405-edit.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Hawks vs Knicks", time: "7:30 PM" },
+                    { date: "18", month: "OCT", teams: "Hawks vs Heat", time: "7:30 PM" },
+                    { date: "22", month: "OCT", teams: "Hawks vs Celtics", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 2,
+                name: "TD Garden",
+                team: "Boston Celtics",
+                location: "Boston, MA",
+                capacity: "19,156",
+                conference: "eastern",
+                division: "atlantic",
+                image: "https://www.trolleytours.com/wp-content/uploads/2016/05/boston-td-garden.jpg",
+                events: [
+                    { date: "16", month: "OCT", teams: "Celtics vs 76ers", time: "7:30 PM" },
+                    { date: "20", month: "OCT", teams: "Celtics vs Raptors", time: "7:30 PM" },
+                    { date: "25", month: "OCT", teams: "Celtics vs Bucks", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Barclays Center",
+                team: "Brooklyn Nets",
+                location: "Brooklyn, NY",
+                capacity: "17,732",
+                conference: "eastern",
+                division: "atlantic",
+                image: "https://image.newyork.com.au/wp-content/uploads/2024/09/Barclays-Center-in-Brooklyn-Brooklyn-Nets.jpg",
+                events: [
+                    { date: "17", month: "OCT", teams: "Nets vs Bulls", time: "7:30 PM" },
+                    { date: "21", month: "OCT", teams: "Nets vs Hornets", time: "7:30 PM" },
+                    { date: "26", month: "OCT", teams: "Nets vs Wizards", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Spectrum Center",
+                team: "Charlotte Hornets",
+                location: "Charlotte, NC",
+                capacity: "19,077",
+                conference: "eastern",
+                division: "southeast",
+                image: "https://cloudfront-us-east-1.images.arcpublishing.com/gray/D3PHU2LAHBHKVAWUDQG7UCIV4U.png",
+                events: [
+                    { date: "15", month: "OCT", teams: "Hornets vs Pacers", time: "7:00 PM" },
+                    { date: "19", month: "OCT", teams: "Hornets vs Magic", time: "7:00 PM" },
+                    { date: "24", month: "OCT", teams: "Hornets vs Hawks", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 5,
+                name: "United Center",
+                team: "Chicago Bulls",
+                location: "Chicago, IL",
+                capacity: "20,917",
+                conference: "eastern",
+                division: "central",
+                image: "https://aws-tiqets-cdn.imgix.net/images/content/a43d6f1f068c4d518a4627377e436498.jpeg?auto=format%2Ccompress&fit=crop&ixlib=python-4.0.0&q=70",
+                events: [
+                    { date: "16", month: "OCT", teams: "Bulls vs Pistons", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Bulls vs Cavaliers", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Bulls vs Pacers", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Rocket Mortgage FieldHouse",
+                team: "Cleveland Cavaliers",
+                location: "Cleveland, OH",
+                capacity: "19,432",
+                conference: "eastern",
+                division: "central",
+                image: "data:image/jpeg;base64,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",
+                events: [
+                    { date: "17", month: "OCT", teams: "Cavaliers vs Wizards", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Cavaliers vs Knicks", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Cavaliers vs Raptors", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 7,
+                name: "American Airlines Center",
+                team: "Dallas Mavericks",
+                location: "Dallas, TX",
+                capacity: "19,200",
+                conference: "western",
+                division: "southwest",
+                image: "https://dt1jqiolganbd.cloudfront.net/wp-content/uploads/2024/09/americanairlinescentermavs.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Mavericks vs Rockets", time: "7:30 PM" },
+                    { date: "19", month: "OCT", teams: "Mavericks vs Spurs", time: "7:30 PM" },
+                    { date: "24", month: "OCT", teams: "Mavericks vs Pelicans", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 8,
+                name: "Ball Arena",
+                team: "Denver Nuggets",
+                location: "Denver, CO",
+                capacity: "19,520",
+                conference: "western",
+                division: "northwest",
+                image: "https://static.wixstatic.com/media/ca8cc2_64dead9d9db14cef949ff1e86e0cecfe~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ca8cc2_64dead9d9db14cef949ff1e86e0cecfe~mv2.jpg",
+                events: [
+                    { date: "16", month: "OCT", teams: "Nuggets vs Jazz", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Nuggets vs Timberwolves", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Nuggets vs Trail Blazers", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 9,
+                name: "Little Caesars Arena",
+                team: "Detroit Pistons",
+                location: "Detroit, MI",
+                capacity: "20,332",
+                conference: "eastern",
+                division: "central",
+                image: "https://preview.redd.it/little-caesars-arena-detroit-mi-v0-iazxc8tctimc1.jpeg?width=1080&crop=smart&auto=webp&s=f0ad9359b18cbd1ec2fb1fcf6ce37d16a167705d",
+                events: [
+                    { date: "17", month: "OCT", teams: "Pistons vs Magic", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Pistons vs Bucks", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Pistons vs Bulls", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 10,
+                name: "Chase Center",
+                team: "Golden State Warriors",
+                location: "San Francisco, CA",
+                capacity: "18,064",
+                conference: "western",
+                division: "pacific",
+                image: "https://www.rateyourseats.com/shared/Chase-Center-Basketball-Section-Bridge_1_on_10-10-2019_FL.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Warriors vs Lakers", time: "7:30 PM" },
+                    { date: "19", month: "OCT", teams: "Warriors vs Clippers", time: "7:30 PM" },
+                    { date: "24", month: "OCT", teams: "Warriors vs Suns", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 11,
+                name: "Toyota Center",
+                team: "Houston Rockets",
+                location: "Houston, TX",
+                capacity: "18,055",
+                conference: "western",
+                division: "southwest",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/42/a0/ae/toyota-center.jpg?w=900&h=500&s=1",
+                events: [
+                    { date: "16", month: "OCT", teams: "Rockets vs Mavericks", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Rockets vs Spurs", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Rockets vs Pelicans", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 12,
+                name: "Gainbridge Fieldhouse",
+                team: "Indiana Pacers",
+                location: "Indianapolis, IN",
+                capacity: "17,923",
+                conference: "eastern",
+                division: "central",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyN8wGv_lHjMOHNSyeFYBic2haE_eP-h7eesncRRYBAegvJjfBgVlLmTxDKxdI5MWLV94&usqp=CAU",
+                events: [
+                    { date: "17", month: "OCT", teams: "Pacers vs Cavaliers", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Pacers vs Knicks", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Pacers vs Bulls", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 13,
+                name: "Intuit Dome",
+                team: "Los Angeles Clippers",
+                location: "Los Angeles, CA",
+                capacity: "19,068",
+                conference: "western",
+                division: "pacific",
+                image: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2024-11/241106-Intuit-Dome-2-aa-351p-5b9347.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Clippers vs Lakers", time: "7:30 PM" },
+                    { date: "19", month: "OCT", teams: "Clippers vs Warriors", time: "7:30 PM" },
+                    { date: "24", month: "OCT", teams: "Clippers vs Suns", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 14,
+                name: "Crypto.com Arena",
+                team: "Los Angeles Lakers",
+                location: "Los Angeles, CA",
+                capacity: "18,997",
+                conference: "western",
+                division: "pacific",
+                image: "data:image/jpeg;base64,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",
+                events: [
+                    { date: "16", month: "OCT", teams: "Lakers vs Clippers", time: "7:30 PM" },
+                    { date: "20", month: "OCT", teams: "Lakers vs Warriors", time: "7:30 PM" },
+                    { date: "25", month: "OCT", teams: "Lakers vs Suns", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 15,
+                name: "FedExForum",
+                team: "Memphis Grizzlies",
+                location: "Memphis, TN",
+                capacity: "17,794",
+                conference: "western",
+                division: "southwest",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/FedExForum_2015.jpg/250px-FedExForum_2015.jpg",
+                events: [
+                    { date: "17", month: "OCT", teams: "Grizzlies vs Pelicans", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Grizzlies vs Timberwolves", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Grizzlies vs Rockets", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 16,
+                name: "FTX Arena",
+                team: "Miami Heat",
+                location: "Miami, FL",
+                capacity: "19,600",
+                conference: "eastern",
+                division: "southeast",
+                image: "https://i.pinimg.com/736x/b4/95/4a/b4954aaf4cbb62c1f09187440ece5a31.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Heat vs Hawks", time: "7:30 PM" },
+                    { date: "19", month: "OCT", teams: "Heat vs Hornets", time: "7:30 PM" },
+                    { date: "24", month: "OCT", teams: "Heat vs Wizards", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 17,
+                name: "Fiserv Forum",
+                team: "Milwaukee Bucks",
+                location: "Milwaukee, WI",
+                capacity: "17,341",
+                conference: "eastern",
+                division: "central",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Fiserv_Forum_seating_bowl.jpg/1280px-Fiserv_Forum_seating_bowl.jpg",
+                events: [
+                    { date: "16", month: "OCT", teams: "Bucks vs Celtics", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Bucks vs 76ers", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Bucks vs Nets", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 18,
+                name: "Target Center",
+                team: "Minnesota Timberwolves",
+                location: "Minneapolis, MN",
+                capacity: "18,798",
+                conference: "western",
+                division: "northwest",
+                image: "https://dt1jqiolganbd.cloudfront.net/wp-content/uploads/2023/10/targetcenterbaselineview.jpg",
+                events: [
+                    { date: "17", month: "OCT", teams: "Timberwolves vs Nuggets", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Timberwolves vs Trail Blazers", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Timberwolves vs Jazz", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 19,
+                name: "Smoothie King Center",
+                team: "New Orleans Pelicans",
+                location: "New Orleans, LA",
+                capacity: "16,867",
+                conference: "western",
+                division: "southwest",
+                image: "https://scontent.fprn3-1.fna.fbcdn.net/v/t1.6435-9/31901828_2036107623069483_5333968753040293888_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=sZiZr-CpGmIQ7kNvwEYV5bU&_nc_oc=AdmGRlTRVdeVrs1I7uolJwK_bOuYsFUN89QOL5jgJydmIPtfdY-IM8Hq6dJ5OE6IkQc&_nc_zt=23&_nc_ht=scontent.fprn3-1.fna&_nc_gid=B0ksWccWP2ZV52_2mUQvJw&oh=00_AfaLJ440sKAheGq4s_jTzL1u1H2aiurgz3XPzT0mh580mA&oe=68EA068F",
+                events: [
+                    { date: "15", month: "OCT", teams: "Pelicans vs Grizzlies", time: "7:00 PM" },
+                    { date: "19", month: "OCT", teams: "Pelicans vs Mavericks", time: "7:00 PM" },
+                    { date: "24", month: "OCT", teams: "Pelicans vs Spurs", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 20,
+                name: "Madison Square Garden",
+                team: "New York Knicks",
+                location: "New York, NY",
+                capacity: "19,812",
+                conference: "eastern",
+                division: "atlantic",
+                image: "https://lh3.googleusercontent.com/proxy/xmvoHBNupp-OQYBCh2F_DLKOBAP-Je0tWAShkPgN8Th7ISa4vzZBUeCtg5VYE4RDXRAwkr5SF-t9-VYVnuRaKiZsDUuqpqhadzEKP7Ol_J1lyZc2TA",
+                events: [
+                    { date: "16", month: "OCT", teams: "Knicks vs Celtics", time: "7:30 PM" },
+                    { date: "20", month: "OCT", teams: "Knicks vs 76ers", time: "7:30 PM" },
+                    { date: "25", month: "OCT", teams: "Knicks vs Nets", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 21,
+                name: "Paycom Center",
+                team: "Oklahoma City Thunder",
+                location: "Oklahoma City, OK",
+                capacity: "18,203",
+                conference: "western",
+                division: "northwest",
+                image: "https://lh6.googleusercontent.com/proxy/rH4FgpiebWSEkIAluIJ610l5AAe_hQpp0jfL-3jCTt7HORyR_9HmXnnaKyomsCC1DcX6MMzUUMWbzBJc1C7AnFjyBiawcAbUxnzBmezEMJjD8OyZQjWBg6qqxrS8tFGiFUbQFJ0",
+                events: [
+                    { date: "17", month: "OCT", teams: "Thunder vs Rockets", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Thunder vs Spurs", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Thunder vs Nuggets", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 22,
+                name: "Amway Center",
+                team: "Orlando Magic",
+                location: "Orlando, FL",
+                capacity: "18,846",
+                conference: "eastern",
+                division: "southeast",
+                image: "https://lh5.googleusercontent.com/proxy/DiDWkOuDYkyt813w1dpKvL0jsQqlWU2w-dV3Co0SnGLLezd_V80bQCqIG_TCoUiB3AHami28c6c-xaXwmo8IEDaKsV9tIQoIanC1qpg0H4aMySASD3TZEsEo",
+                events: [
+                    { date: "15", month: "OCT", teams: "Magic vs Wizards", time: "7:00 PM" },
+                    { date: "19", month: "OCT", teams: "Magic vs Hornets", time: "7:00 PM" },
+                    { date: "24", month: "OCT", teams: "Magic vs Heat", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 23,
+                name: "Wells Fargo Center",
+                team: "Philadelphia 76ers",
+                location: "Philadelphia, PA",
+                capacity: "20,478",
+                conference: "eastern",
+                division: "atlantic",
+                image: "https://cloudfront-us-east-1.images.arcpublishing.com/pmn/NYHD5TV2DBECZBZHK6X2JOG4LY.jpg",
+                events: [
+                    { date: "16", month: "OCT", teams: "76ers vs Nets", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "76ers vs Raptors", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "76ers vs Celtics", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 24,
+                name: "Footprint Center",
+                team: "Phoenix Suns",
+                location: "Phoenix, AZ",
+                capacity: "17,071",
+                conference: "western",
+                division: "pacific",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/28/e9/70/caption.jpg?w=1200&h=-1&s=1",
+                events: [
+                    { date: "17", month: "OCT", teams: "Suns vs Lakers", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Suns vs Clippers", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Suns vs Warriors", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 25,
+                name: "Moda Center",
+                team: "Portland Trail Blazers",
+                location: "Portland, OR",
+                capacity: "19,393",
+                conference: "western",
+                division: "northwest",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/25/05/30/caption.jpg?w=1200&h=-1&s=1",
+                events: [
+                    { date: "15", month: "OCT", teams: "Trail Blazers vs Kings", time: "7:00 PM" },
+                    { date: "19", month: "OCT", teams: "Trail Blazers vs Jazz", time: "7:00 PM" },
+                    { date: "24", month: "OCT", teams: "Trail Blazers vs Nuggets", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 26,
+                name: "Golden 1 Center",
+                team: "Sacramento Kings",
+                location: "Sacramento, CA",
+                capacity: "17,583",
+                conference: "western",
+                division: "pacific",
+                image: "https://www.golden1center.com/wp-content/uploads/2016/12/ImmersiveSound-2016-1130x650.jpg",
+                events: [
+                    { date: "16", month: "OCT", teams: "Kings vs Trail Blazers", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Kings vs Suns", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Kings vs Lakers", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 27,
+                name: "AT&T Center",
+                team: "San Antonio Spurs",
+                location: "San Antonio, TX",
+                capacity: "18,418",
+                conference: "western",
+                division: "southwest",
+                image: "https://lh4.googleusercontent.com/proxy/9oXbq1-rgapTyrRKH7YSBr11KBE52VxqBKRYp-DYikJIIKnpJ0EfUh-_duWCU_l-_LNJMLx5slnjbDrSO2zZHEUt2DDHKQPZXWYYmpYyvSH60RO8XTlSFz9e",
+                events: [
+                    { date: "17", month: "OCT", teams: "Spurs vs Mavericks", time: "7:30 PM" },
+                    { date: "21", month: "OCT", teams: "Spurs vs Rockets", time: "7:30 PM" },
+                    { date: "26", month: "OCT", teams: "Spurs vs Pelicans", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 28,
+                name: "Scotiabank Arena",
+                team: "Toronto Raptors",
+                location: "Toronto, ON",
+                capacity: "19,800",
+                conference: "eastern",
+                division: "atlantic",
+                image: "https://mediaim.expedia.com/destination/2/0eac53acf36796a89cc6b7e43b9994a1.jpg",
+                events: [
+                    { date: "15", month: "OCT", teams: "Raptors vs Wizards", time: "7:30 PM" },
+                    { date: "19", month: "OCT", teams: "Raptors vs Bulls", time: "7:30 PM" },
+                    { date: "24", month: "OCT", teams: "Raptors vs Cavaliers", time: "7:30 PM" }
+                ]
+            },
+            {
+                id: 29,
+                name: "Vivint Arena",
+                team: "Utah Jazz",
+                location: "Salt Lake City, UT",
+                capacity: "18,306",
+                conference: "western",
+                division: "northwest",
+                image: "https://www.abc4.com/wp-content/uploads/sites/4/2021/06/20210602_195448.jpg?strip=1",
+                events: [
+                    { date: "16", month: "OCT", teams: "Jazz vs Nuggets", time: "7:00 PM" },
+                    { date: "20", month: "OCT", teams: "Jazz vs Timberwolves", time: "7:00 PM" },
+                    { date: "25", month: "OCT", teams: "Jazz vs Trail Blazers", time: "7:00 PM" }
+                ]
+            },
+            {
+                id: 30,
+                name: "Capital One Arena",
+                team: "Washington Wizards",
+                location: "Washington, D.C.",
+                capacity: "20,356",
+                conference: "eastern",
+                division: "southeast",
+                image: "https://arlohotels.com/wp-content/uploads/2025/03/Capital_One_Arena_interior_2017-04-19-scaled-1.jpg",
+                events: [
+                    { date: "17", month: "OCT", teams: "Wizards vs Magic", time: "7:00 PM" },
+                    { date: "21", month: "OCT", teams: "Wizards vs Hornets", time: "7:00 PM" },
+                    { date: "26", month: "OCT", teams: "Wizards vs Hawks", time: "7:00 PM" }
+                ]
+            }
+        ];
+
+        // Function to render arenas
+        function renderArenas(filteredArenas = arenasData) {
+            const arenasContainer = document.getElementById('arenas-container');
+            const arenasCount = document.getElementById('arenas-count');
+            
+            arenasContainer.innerHTML = '';
+            arenasCount.textContent = `${filteredArenas.length} arena${filteredArenas.length !== 1 ? 's' : ''}`;
+            
+            filteredArenas.forEach(arena => {
+                const arenaCard = document.createElement('div');
+                arenaCard.className = 'arena-card';
+                arenaCard.dataset.conference = arena.conference;
+                arenaCard.dataset.division = arena.division;
+                
+                arenaCard.innerHTML = `
+                    <div class="arena-image">
+                        <img src="${arena.image}" alt="${arena.name}">
+                        <div class="arena-team">${arena.team}</div>
+                    </div>
+                    <div class="arena-details">
+                        <h3 class="arena-name">${arena.name}</h3>
+                        <div class="arena-info">
+                            <div class="arena-info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${arena.location}</span>
+                            </div>
+                            <div class="arena-info-item">
+                                <i class="fas fa-basketball-ball"></i>
+                                <span>${arena.team}</span>
+                            </div>
+                            <div class="arena-info-item">
+                                <i class="fas fa-users"></i>
+                                <span>Capacity: ${arena.capacity}</span>
+                            </div>
+                        </div>
+                        <div class="arena-capacity">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>Upcoming games: ${arena.events.length}</span>
+                        </div>
+                        <div class="arena-actions">
+                            <a href="#" class="btn">View Arena Details</a>
+                            <a href="#" class="btn btn-outline">See All Events</a>
+                        </div>
+                    </div>
+                `;
+                
+                arenasContainer.appendChild(arenaCard);
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArenas();
+            
+            // Add filter functionality
+            const conferenceFilter = document.getElementById('conference-filter');
+            const divisionFilter = document.getElementById('division-filter');
+            const sortFilter = document.getElementById('sort-filter');
+            
+            function applyFilters() {
+                const conferenceValue = conferenceFilter.value;
+                const divisionValue = divisionFilter.value;
+                const sortValue = sortFilter.value;
+                
+                let filteredArenas = [...arenasData];
+                
+                // Apply conference filter
+                if (conferenceValue !== 'all') {
+                    filteredArenas = filteredArenas.filter(arena => arena.conference === conferenceValue);
+                }
+                
+                // Apply division filter
+                if (divisionValue !== 'all') {
+                    filteredArenas = filteredArenas.filter(arena => arena.division === divisionValue);
+                }
+                
+                // Apply sorting
+                if (sortValue === 'name') {
+                    filteredArenas.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (sortValue === 'team') {
+                    filteredArenas.sort((a, b) => a.team.localeCompare(b.team));
+                } else if (sortValue === 'capacity') {
+                    filteredArenas.sort((a, b) => {
+                        const capacityA = parseInt(a.capacity.replace(/,/g, ''));
+                        const capacityB = parseInt(b.capacity.replace(/,/g, ''));
+                        return capacityB - capacityA;
+                    });
+                }
+                
+                renderArenas(filteredArenas);
+            }
+            
+            conferenceFilter.addEventListener('change', applyFilters);
+            divisionFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+        });
+    </script>
+</body>
+</html>
