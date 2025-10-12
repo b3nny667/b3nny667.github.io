@@ -77,7 +77,6 @@
         <div class="nav-backdrop"></div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <h1>Ben Fazlija</h1>
@@ -86,7 +85,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -103,7 +101,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
@@ -164,7 +161,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
@@ -177,8 +173,7 @@
             </div>
             
             <div class="projects-grid">
- <!-- HoopTix Project -->
-<div class="project-card" data-tech="html javascript">
+ <div class="project-card" data-tech="html javascript">
     <div class="project-image" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);">
         <img src="img/hooptix-page.PNG" alt="HoopTix Basketball Tickets">
     </div>
@@ -193,7 +188,7 @@
         
         </div>
         <div class="project-links">
-            <a href="#" class="btn project-demo" data-project-path="HoopTix/index.html">Live Demo</a>
+            <a href="https://hoop-tix.vercel.app/index.html" class="btn" target="_blank">Live Demo</a>
             <a href="https://github.com/b3nny667/HoopTix" class="btn btn-outline">GitHub</a>
         </div>
     </div>
@@ -259,12 +254,10 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
     <section id="certifications" class="certifications-section">
         <div class="container">
             <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
-                <!-- Full Stack Development Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Tectigon Academy-1.png" alt="Full Stack Development Certificate">
@@ -277,7 +270,6 @@
                     </div>
                 </div>
 
-                <!-- English Language Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Oxford 2016-1.png" alt="English Language Certificate">
@@ -290,7 +282,6 @@
                     </div>
                 </div>
 
-                <!-- Web Fundamentals Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Html-1.png" alt="Web Fundamentals Certificate">
@@ -302,7 +293,6 @@
                     </div>
                 </div>
                 
-                <!-- JavaScript Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Jcoders Js-1.png" alt="JavaScript Certificate">
@@ -314,7 +304,6 @@
                     </div>
                 </div>
                 
-                <!-- IT/Media Technician Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/JUNIOR-1.png" alt="IT/Media Technician Certificate">
@@ -326,7 +315,6 @@
                     </div>
                 </div>
                 
-                <!-- React JavaScript Certificate -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/BIT ACADEMY-1.png" alt="React JavaScript Certificate">
@@ -338,7 +326,6 @@
                     </div>
                 </div>
                 
-                <!-- English Certificate (A1) -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Oxford 2017-1.png" alt="English Certificate">
@@ -350,7 +337,6 @@
                     </div>
                 </div>
                 
-                <!-- English Certificate (A1-A2) -->
                 <div class="certification-card">
                     <div class="cert-image">
                         <img src="certificates/Oxford 2019-1.png" alt="English Certificate">
@@ -365,12 +351,10 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Contact Me</h2>
             <div class="contact-form">
-                <!-- Form with AJAX submission -->
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -395,7 +379,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -443,32 +426,31 @@
             demoLinks.forEach(link => {
                 const projectPath = link.getAttribute('data-project-path');
                 
-                // Check if we're on GitHub Pages
-                if (window.location.hostname === 'b3nny667.github.io') {
-                    // On GitHub Pages - use absolute path
-                    link.href = '/' + projectPath;
-                    fixApplied = true;
-                } else if (window.location.protocol === 'file:') {
-                    // Local development - use relative path
-                    link.href = './' + projectPath;
-                } else {
-                    // Other hosting environments
-                    link.href = projectPath;
+                // Only apply this logic to links that still have the 'project-demo' class
+                if (link.classList.contains('project-demo')) {
+                    
+                    // Check if we're on GitHub Pages
+                    if (window.location.hostname === 'b3nny667.github.io') {
+                        // On GitHub Pages - use absolute path
+                        link.href = '/' + projectPath;
+                        fixApplied = true;
+                    } else if (window.location.protocol === 'file:') {
+                        // Local development - use relative path
+                        link.href = './' + projectPath;
+                    } else {
+                        // Other hosting environments
+                        link.href = projectPath;
+                    }
+                    
+                    // Open in new tab
+                    link.target = '_blank';
                 }
-                
-                // Open in new tab
-                link.target = '_blank';
             });
             
             // Show notification if fix was applied
             if (fixApplied) {
                 const notification = document.getElementById('githubFixNotification');
-                notification.style.display = 'block';
-                
-                // Hide notification after 5 seconds
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 5000);
+                // The notification div doesn't exist in the HTML, so we skip showing it
             }
             
             // Update year in footer
@@ -520,4 +502,3 @@
     </script>
 </body>
 </html>
-
